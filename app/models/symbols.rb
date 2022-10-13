@@ -10,4 +10,12 @@ class Symbols
     return symbols
   end
 
+  def Symbols.convert(x, y)
+    url = "https://api.exchangerate.host/convert?from=#{x}&to=#{y}"
+    raw_data = URI.open(url).read
+    parsed_exchange_rate_data = JSON.parse(raw_data)
+    info_hash = parsed_exchange_rate_data.fetch("info")
+    rate = info_hash.fetch("rate")
+    return rate
+  end
 end

@@ -21,4 +21,13 @@ class ApplicationController < ActionController::Base
 
     render({ :template => "dashboard_templates/convert_to_rate.html.erb"})
   end
+
+  def currency_conversion
+    @from_currency = params.fetch("X")
+    @to_currency = params.fetch("Y")
+
+    @conversion = Symbols.convert(@from_currency, @to_currency)
+
+    render({ :template => "dashboard_templates/conversion.html.erb"})
+  end
 end
