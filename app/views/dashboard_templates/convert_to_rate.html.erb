@@ -1,0 +1,11 @@
+<h1>Convert <%= @id %></h1>
+
+<a href="/forex">Go back</a>
+
+<ul>
+  <%@symbols.keys.each do |key| %>
+    <li>
+      <a href="/forex/<%= @id %>/<%= key %>">Convert 1 <%= @id %> to <%= key %>...</a>
+    </li>
+  <% end %>
+</ul>
